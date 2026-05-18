@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-const NAV_LINKS = ["Courses", "Teachers", "Library", "About", "Contact"];
+const NAV_LINKS = [
+  { name: "Courses", href: "/courses" },
+  { name: "Teachers", href: "/teachers" },
+  { name: "Library", href: "/library" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,13 +47,13 @@ const Header = () => {
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-6">
-              {NAV_LINKS.map((l) => (
+              {NAV_LINKS.map((link) => (
                 <a
-                  key={l}
-                  href="#"
+                  key={link.href}
+                  href={link.href}
                   className="text-sm text-gray-500 hover:text-blue-700 transition-colors"
                 >
-                  {l}
+                  {link.name}
                 </a>
               ))}
               <a
@@ -99,13 +105,13 @@ const Header = () => {
           {/* Mobile dropdown */}
           {menuOpen && (
             <div className="md:hidden border-t border-gray-100 py-3">
-              {NAV_LINKS.map((l) => (
+              {NAV_LINKS.map((link) => (
                 <a
-                  key={l}
-                  href="#"
+                  key={link.href}
+                  href={link.href}
                   className="block px-2 py-2.5 text-sm text-gray-600 hover:text-blue-700 hover:bg-gray-50 rounded-lg"
                 >
-                  {l}
+                  {link.name}
                 </a>
               ))}
               <a
