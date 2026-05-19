@@ -1,7 +1,6 @@
 "use client";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { useState } from "react";
 
 const STATS = [
   { num: "500+", label: "Students Enrolled" },
@@ -186,7 +185,10 @@ export default function CoachingCenter() {
       {/* ── HEADER ── */}
       <Header />
       {/* ── HERO ── */}
-      <section className="bg-linear-to-br from-blue-700 via-blue-800 to-blue-900 text-white">
+      <section
+        id="hero"
+        className="bg-linear-to-br from-blue-700 via-blue-800 to-blue-900 text-white"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left">
@@ -362,7 +364,7 @@ export default function CoachingCenter() {
       </section>
 
       {/* ── TEACHERS ── */}
-      <section className="py-16 lg:py-20 bg-gray-50">
+      <section id="teachers" className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-blue-700 text-xs font-semibold tracking-widest uppercase mb-2">
