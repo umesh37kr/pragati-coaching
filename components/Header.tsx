@@ -60,10 +60,10 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                href="#enroll"
+                href="/login"
                 className="ml-2 bg-blue-700 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
-                Enroll Now
+                Login
               </Link>
             </nav>
 
@@ -118,10 +118,10 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                href="#enroll"
+                href="/login"
                 className="block mt-2 bg-blue-700 text-white text-sm text-center px-4 py-2.5 rounded-lg"
               >
-                Enroll Now
+                Login
               </Link>
             </div>
           )}
