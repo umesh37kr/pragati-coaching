@@ -1,6 +1,4 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 
 const STATS = [
   { num: "500+", label: "Students Enrolled" },
@@ -182,8 +180,6 @@ const TESTIMONIALS = [
 export default function CoachingCenter() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
-      {/* ── HEADER ── */}
-      <Header />
       {/* ── HERO ── */}
       <section
         id="hero"
@@ -478,9 +474,6 @@ export default function CoachingCenter() {
           </div>
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <Footer />
     </div>
   );
 }

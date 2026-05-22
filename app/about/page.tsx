@@ -431,8 +431,9 @@ export default function AboutPage() {
                       lineHeight: 1.78,
                     }}
                   >
-                    &ldquo;Education is not merely about passing exams &mdash; it is
-                    about kindling the curiosity that lasts a lifetime.&rdquo;
+                    &ldquo;Education is not merely about passing exams &mdash;
+                    it is about kindling the curiosity that lasts a
+                    lifetime.&rdquo;
                   </p>
                 </div>
 
@@ -454,8 +455,8 @@ export default function AboutPage() {
                   style={{ color: MUTED, lineHeight: 1.9, fontSize: ".97rem" }}
                 >
                   Our faculty brings the same passion to every classroom
-                  interaction &mdash; because we believe that inspired teachers create
-                  inspired students.
+                  interaction &mdash; because we believe that inspired teachers
+                  create inspired students.
                 </p>
               </div>
             </div>
@@ -513,7 +514,9 @@ export default function AboutPage() {
                     pointerEvents: "none",
                   }}
                 />
-                <div style={{ fontSize: 46, marginBottom: 20 }}>{"\u{1F52D}"}</div>
+                <div style={{ fontSize: 46, marginBottom: 20 }}>
+                  {"\u{1F52D}"}
+                </div>
                 <h3
                   style={{
                     fontFamily: FONT_DISPLAY,
@@ -526,9 +529,9 @@ export default function AboutPage() {
                 </h3>
                 <p style={{ color: "rgba(255,255,255,.82)", lineHeight: 1.88 }}>
                   To be the most trusted and transformative coaching institution
-                  in the region &mdash; nurturing not just academic excellence but
-                  holistic growth, producing leaders who contribute meaningfully
-                  to society.
+                  in the region &mdash; nurturing not just academic excellence
+                  but holistic growth, producing leaders who contribute
+                  meaningfully to society.
                 </p>
               </div>
 
@@ -557,7 +560,9 @@ export default function AboutPage() {
                     pointerEvents: "none",
                   }}
                 />
-                <div style={{ fontSize: 46, marginBottom: 20 }}>{"\u{1F680}"}</div>
+                <div style={{ fontSize: 46, marginBottom: 20 }}>
+                  {"\u{1F680}"}
+                </div>
                 <h3
                   style={{
                     fontFamily: FONT_DISPLAY,
@@ -611,7 +616,7 @@ export default function AboutPage() {
         {/* ══════════════════════════════════════
             5. CORE VALUES
         ══════════════════════════════════════ */}
-        <section ref={valRef} style={{ background: OFF, padding: "88px 24px" }}>
+        {/* <section ref={valRef} style={{ background: OFF, padding: "88px 24px" }}>
           <div style={{ maxWidth: 960, margin: "0 auto" }}>
             <div
               style={{
@@ -669,12 +674,12 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ══════════════════════════════════════
             6. CTA
         ══════════════════════════════════════ */}
-        <section
+        {/* <section
           ref={ctaRef}
           style={{
             background: `linear-gradient(135deg, ${NAVY}, ${BLUE})`,
@@ -724,7 +729,7 @@ export default function AboutPage() {
               Enquire Now &rarr;
             </a>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );

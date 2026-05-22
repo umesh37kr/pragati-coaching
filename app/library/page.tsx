@@ -1,6 +1,4 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { useState } from "react";
 
 export default function LibraryComingSoon() {
@@ -8,7 +6,6 @@ export default function LibraryComingSoon() {
 
   return (
     <>
-      <Header />
       <main className="page">
         {/* Ambient background orbs */}
         <div className="orb orb-1" />
@@ -320,7 +317,6 @@ export default function LibraryComingSoon() {
           }
         `}</style>
       </main>
-      <Footer />
     </>
   );
 }
