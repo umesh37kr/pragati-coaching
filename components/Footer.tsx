@@ -1,5 +1,13 @@
+import Link from "next/link";
 import React from "react";
 
+const NAV_LINKS = [
+  { name: "Courses", href: "/#courses" },
+  { name: "Teachers", href: "/#teachers" },
+  { name: "Library", href: "/library" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 const Footer = () => {
   return (
     <>
@@ -37,17 +45,15 @@ const Footer = () => {
               <p className="text-white text-xs font-semibold mb-3 uppercase tracking-wider">
                 Quick Links
               </p>
-              {["Courses", "Teachers", "Library", "About Us", "Contact"].map(
-                (l) => (
-                  <a
-                    key={l}
-                    href="#"
-                    className="block text-xs text-gray-400 hover:text-white py-1 transition-colors"
-                  >
-                    {l}
-                  </a>
-                ),
-              )}
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-xs text-gray-400 hover:text-white py-1 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
             <div>
               <p className="text-white text-xs font-semibold mb-3 uppercase tracking-wider">
@@ -58,7 +64,7 @@ const Footer = () => {
                 <br />
                 📞 +91 82104 61407
                 <br />
-                ✉️ info@brightfutureacademy.in
+                ✉️ info@pragaticoaching.com
                 <br />
                 🕐 Mon–Sat: 6am – 7pm
               </p>

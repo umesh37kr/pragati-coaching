@@ -56,15 +56,15 @@ const ContactPage = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               <FaPhone className="text-blue-600 text-xl mr-4" />
-              <span>+1 234 567 890</span>
+              <span> +91 82104 61407</span>
             </div>
             <div className="flex items-center">
               <FaEnvelope className="text-blue-600 text-xl mr-4" />
-              <span>info@example.com</span>
+              <span>info@pragaticoaching.com</span>
             </div>
             <div className="flex items-center">
               <FaMapMarkerAlt className="text-blue-600 text-xl mr-4" />
-              <span>123 Main Street, City, Country</span>
+              <span>Near RKMG +2 High School Sarja Polpol</span>
             </div>
           </div>
 
