@@ -5,6 +5,7 @@ const contactSchema = new mongoose.Schema({
   email: { type: String, required: true },
   message: { type: String, required: true },
 });
-const Contact = mongoose.model("Contact", contactSchema);
+const Contact =
+  mongoose.models.Contact || mongoose.model("Contact", contactSchema);
 
 export default Contact;
