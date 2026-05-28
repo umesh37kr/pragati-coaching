@@ -2,7 +2,7 @@ import {
   LayoutDashboard,
   Bell,
   GraduationCap,
-  Users,
+  UserRoundSearch,
   Settings,
 } from "lucide-react";
 
@@ -23,13 +23,13 @@ export const dashboardMenu = [
     icon: Bell,
   },
   {
-    title: "Teachers",
-    href: "/dashboard/teachers",
-    icon: Users,
+    title: "Contact",
+    href: "/dashboard/contacts",
+    icon: UserRoundSearch,
   },
-  {
-    title: "Settings",
-    href: "/dashboard/settings",
-    icon: Settings,
-  },
+  //   {
+  //     title: "Settings",
+  //     href: "/dashboard/settings",
+  //     icon: Settings,
+  //   },
 ];

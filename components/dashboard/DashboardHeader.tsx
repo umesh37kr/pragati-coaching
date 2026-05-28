@@ -6,7 +6,7 @@ export default function DashboardHeader() {
       <div className="flex items-center gap-3">
         <MobileSidebar />
 
-        <h1 className="text-lg font-semibold">School Dashboard</h1>
+        <h1 className="text-lg font-semibold">Pragati Coaching Dashboard</h1>
       </div>
 
       <div>Admin</div>

@@ -9,7 +9,7 @@ export default function DashboardSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-white">
+    <aside className="hidden md:flex h-screen w-60 flex-col border-r bg-white">
       <div className="border-b p-5">
         <h2 className="text-xl font-bold">Admin Panel</h2>
       </div>
@@ -23,10 +23,10 @@ export default function DashboardSidebar() {
               key={item.href}
               href={item.href}
               className={clsx(
-                "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all",
+                "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all",
                 pathname === item.href
-                  ? "bg-black text-white"
-                  : "hover:bg-gray-100",
+                  ? "bg-amber-800 text-gray-100"
+                  : "hover:bg-amber-700",
               )}
             >
               <Icon size={18} />
