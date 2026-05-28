@@ -179,7 +179,7 @@ const TESTIMONIALS = [
 
 export default function CoachingCenter() {
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* ── HERO ── */}
       <section
         id="hero"
