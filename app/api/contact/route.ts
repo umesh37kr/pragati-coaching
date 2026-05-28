@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import connectDB from "../../../lib/mongodb";
 import Contact from "../../../models/contact";
 await connectDB();
@@ -26,5 +27,27 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ error: "Invalid request body" }), {
       status: 400,
     });
+  }
+}
+
+export async function GET() {
+  try {
+    const contacts = await Contact.find().sort({
+      createdAt: -1,
+    });
+
+    return NextResponse.json({
+      success: true,
+      data: contacts,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed",
+        error: error,
+      },
+      { status: 500 },
+    );
   }
 }
