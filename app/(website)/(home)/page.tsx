@@ -107,6 +107,7 @@ const GRADES = [
 
 const TEACHERS = [
   {
+    id: 1,
     initials: "PK",
     name: "Pawan Kumar",
     exp: "15 yrs experience",
@@ -115,6 +116,7 @@ const TEACHERS = [
     tag: "bg-blue-50 text-blue-700",
   },
   {
+    id: 2,
     initials: "AS",
     name: "Anjali Sharma",
     exp: "10 yrs experience",
@@ -123,6 +125,7 @@ const TEACHERS = [
     tag: "bg-emerald-50 text-emerald-700",
   },
   {
+    id: 3,
     initials: "PK",
     name: "Pawan Kumar",
     exp: "12 yrs experience",
@@ -131,6 +134,7 @@ const TEACHERS = [
     tag: "bg-violet-50 text-violet-700",
   },
   {
+    id: 4,
     initials: "PK",
     name: "Pawan Kumar",
     exp: "8 yrs experience",
@@ -139,6 +143,7 @@ const TEACHERS = [
     tag: "bg-amber-50 text-amber-700",
   },
   {
+    id: 5,
     initials: "NK",
     name: "Neha Khanna",
     exp: "11 yrs experience",
@@ -147,6 +152,7 @@ const TEACHERS = [
     tag: "bg-rose-50 text-rose-700",
   },
   {
+    id: 6,
     initials: "RG",
     name: "Rajan Gupta",
     exp: "9 yrs experience",
@@ -376,7 +382,7 @@ export default function CoachingCenter() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {TEACHERS.map((t) => (
               <div
-                key={t.name}
+                key={t.id}
                 className="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col items-center text-center hover:shadow-md transition-shadow"
               >
                 <div
