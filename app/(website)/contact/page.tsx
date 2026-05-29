@@ -6,7 +6,7 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    phone: "",
     message: "",
   });
   const [status, setStatus] = useState<
@@ -35,7 +35,7 @@ const ContactPage = () => {
       setFeedback(
         "Your message has been sent successfully. We'll get back to you soon.",
       );
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", phone: "", message: "" });
     } catch (error) {
       console.error("Contact form submit error:", error);
       setStatus("error");
@@ -90,18 +90,18 @@ const ContactPage = () => {
               </div>
               <div className="mb-4">
                 <label
-                  htmlFor="email"
+                  htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Email
+                  Phone
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
+                  type="text"
+                  id="phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Your Email"
+                  placeholder="Your Phone"
                   required
                 />
               </div>

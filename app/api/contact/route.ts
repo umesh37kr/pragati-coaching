@@ -4,8 +4,8 @@ import Contact from "../../../models/contact";
 await connectDB();
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
-    if (!name || !email || !message) {
+    const { name, phone, message } = await request.json();
+    if (!name || !phone || !message) {
       return new Response(
         JSON.stringify({ error: "All fields are required" }),
         {
@@ -13,7 +13,7 @@ export async function POST(request: Request) {
         },
       );
     }
-    const newContact = new Contact({ name, email, message });
+    const newContact = new Contact({ name, phone, message });
     await newContact.save();
 
     return new Response(
