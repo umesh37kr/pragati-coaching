@@ -1,5 +1,6 @@
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function DashboardLayout({
   children,
@@ -14,6 +15,7 @@ export default function DashboardLayout({
         <DashboardHeader />
 
         <main className="flex-1 p-5">{children}</main>
+        <Toaster />
       </div>
     </div>
   );

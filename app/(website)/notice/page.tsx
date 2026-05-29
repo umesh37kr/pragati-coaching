@@ -25,7 +25,7 @@ const notices = [
 const Notice = () => {
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50">
         <div className="container mx-auto py-10">
           <div className="text-center mb-10">
             <h1 className="text-5xl font-bold">Notice Board</h1>
