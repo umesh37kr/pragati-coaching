@@ -1,3 +1,13 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
+
+import { Plus, Pencil, Trash } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
 import {
   Table,
   TableBody,
@@ -6,94 +16,110 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Pencil, Trash } from "lucide-react";
-import { formatDate } from "date-fns";
-import Link from "next/link";
-const notices = [
-  {
-    _id: "1",
-    title: "Notice 1",
-    category: "General",
-    priority: "High",
-    createdAt: "2024-06-01T10:00:00Z",
-  },
-  {
-    _id: "2",
-    title: "Notice 2",
-    category: "Updates",
-    priority: "Medium",
-    createdAt: "2024-06-02T12:00:00Z",
-  },
-  {
-    _id: "3",
-    title: "Notice 3",
-    category: "Events",
-    priority: "Low",
-    createdAt: "2024-06-03T14:00:00Z",
-  },
-];
-export default function NoticesPage() {
-  return (
-    <>
-      <div>
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-semibold text-gray-800">Notices</h1>
-            <p className="text-muted-foreground">Manage all notices</p>
-          </div>
-          <div className="mr-20">
-            <Button asChild className="bg-amber-800 hover:bg-amber-700">
-              <Link href="/dashboard/notices/create">
-                <Plus />
-                Add Notice
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="mt-4">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Title</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Priority</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
 
-            <TableBody>
-              {notices.map((notice) => (
+import { getNotices } from "@/services/notice.service";
+
+import { INotice } from "@/types/notice";
+
+export default function NoticesPage() {
+  const [notices, setNotices] = useState<INotice[]>([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const fetchNotices = async () => {
+    try {
+      const data = await getNotices();
+
+      setNotices(data);
+    } catch (error) {
+      console.error("Failed to fetch notices", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchNotices();
+  }, []);
+
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-semibold">Notices</h1>
+
+          <p className="text-muted-foreground">Manage all notices</p>
+        </div>
+
+        <Button asChild className="bg-amber-800 hover:bg-amber-700">
+          <Link href="/dashboard/notices/create">
+            <Plus className="mr-2 h-4 w-4" />
+            Add Notice
+          </Link>
+        </Button>
+      </div>
+
+      <div className="mt-6 rounded-lg border bg-white">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Title</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Priority</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead className="w-[150px]">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+
+          <TableBody>
+            {loading ? (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center py-10">
+                  Loading notices...
+                </TableCell>
+              </TableRow>
+            ) : notices.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center py-10">
+                  No notices found
+                </TableCell>
+              </TableRow>
+            ) : (
+              notices.map((notice) => (
                 <TableRow key={notice._id}>
-                  <TableCell>{notice.title}</TableCell>
+                  <TableCell className="font-medium">{notice.title}</TableCell>
 
                   <TableCell>{notice.category}</TableCell>
 
                   <TableCell>{notice.priority}</TableCell>
 
                   <TableCell>
-                    {formatDate(notice.createdAt, "dd-MM-yyyy")}
+                    {format(new Date(notice.createdAt), "dd-MM-yyyy")}
+                  </TableCell>
+
+                  <TableCell className="font-sm">
+                    {notice.description}
                   </TableCell>
 
                   <TableCell>
                     <div className="flex gap-2">
                       <Button size="icon" variant="outline">
-                        <Pencil />
+                        <Pencil className="h-4 w-4" />
                       </Button>
 
                       <Button size="icon" variant="destructive">
-                        <Trash />
+                        <Trash className="h-4 w-4" />
                       </Button>
                     </div>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              ))
+            )}
+          </TableBody>
+        </Table>
       </div>
-    </>
+    </div>
   );
 }

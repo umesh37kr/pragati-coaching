@@ -1,6 +1,7 @@
 import Notice from "@/models/Notice";
 import { noticeSchema } from "@/validations/notice.schema";
 
+// POST /api/notice --> create notice
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -26,6 +27,26 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error(error);
 
+    return Response.json(
+      {
+        error: "Internal Server Error",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
+
+// GET /api/notice --> get all notices
+export async function GET() {
+  try {
+    const notices = await Notice.find().sort({ createdAt: -1 });
+    return Response.json(notices, {
+      status: 200,
+    });
+  } catch (error) {
+    console.error(error);
     return Response.json(
       {
         error: "Internal Server Error",

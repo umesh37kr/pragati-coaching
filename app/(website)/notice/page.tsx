@@ -1,28 +1,52 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "date-fns";
+import { useEffect, useState } from "react";
+import { getNotices } from "@/services/notice.service";
+import { INotice } from "@/types/notice";
 
-const notices = [
-  {
-    _id: "1",
-    title: "Exam Schedule Released",
-    description:
-      "The exam schedule for the upcoming semester has been released. Please check the notice board for details.",
-    category: "Exams",
-    priority: "High",
-    createdAt: "2024-06-01T10:00:00Z",
-  },
-  {
-    _id: "2",
-    title: "Holiday Announcement",
-    description:
-      "The institute will be closed on 15th June for a public holiday. Please plan accordingly.",
-    category: "General",
-    priority: "Medium",
-    createdAt: "2024-06-05T12:00:00Z",
-  },
-];
+// const notices = [
+//   {
+//     _id: "1",
+//     title: "Exam Schedule Released",
+//     description:
+//       "The exam schedule for the upcoming semester has been released. Please check the notice board for details.",
+//     category: "Exams",
+//     priority: "High",
+//     createdAt: "2024-06-01T10:00:00Z",
+//   },
+//   {
+//     _id: "2",
+//     title: "Holiday Announcement",
+//     description:
+//       "The institute will be closed on 15th June for a public holiday. Please plan accordingly.",
+//     category: "General",
+//     priority: "Medium",
+//     createdAt: "2024-06-05T12:00:00Z",
+//   },
+// ];
 const Notice = () => {
+  const [notices, setNotices] = useState<INotice[]>([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const fetchNotices = async () => {
+    try {
+      const data = await getNotices();
+
+      setNotices(data);
+    } catch (error) {
+      console.error("Failed to fetch notices", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchNotices();
+  }, []);
   return (
     <>
       <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50">
