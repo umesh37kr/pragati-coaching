@@ -7,3 +7,10 @@ export interface INotice {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface NoticeFormData {
+  title: string;
+  description: string;
+  category: string;
+  priority: string;
+}

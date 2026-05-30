@@ -114,3 +114,28 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     );
   }
 }
+
+// GET /api/notice --> get notice by id
+export async function GET(request: NextRequest, { params }: RouteParams) {
+  try {
+    await connectDB();
+
+    const { id } = await params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return Response.json({ error: "Invalid notice id" }, { status: 400 });
+    }
+
+    const notice = await Notice.findById(id).lean();
+
+    if (!notice) {
+      return Response.json({ error: "Notice not found" }, { status: 404 });
+    }
+
+    return Response.json(notice);
+  } catch (error) {
+    console.error(error);
+
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}

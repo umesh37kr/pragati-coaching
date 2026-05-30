@@ -15,6 +15,12 @@ export const getNotices = async (): Promise<INotice[]> => {
   return response.data;
 };
 
+export const getNoticeById = async (id: string): Promise<INotice> => {
+  const response = await axios.get(`/api/notice/${id}`);
+
+  return response.data;
+};
+
 export const updateNotice = async (id: string, data: NoticeFormData) => {
   const response = await axios.put(`/api/notice/${id}`, data);
 
