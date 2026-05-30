@@ -14,3 +14,15 @@ export const getNotices = async (): Promise<INotice[]> => {
 
   return response.data;
 };
+
+export const updateNotice = async (id: string, data: NoticeFormData) => {
+  const response = await axios.put(`/api/notice/${id}`, data);
+
+  return response.data;
+};
+
+export const deleteNotice = async (id: string) => {
+  const response = await axios.delete(`/api/notice/${id}`);
+
+  return response.data;
+};
