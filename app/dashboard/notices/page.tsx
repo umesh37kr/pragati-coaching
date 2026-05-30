@@ -17,9 +17,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { getNotices } from "@/services/notice.service";
+import { deleteNotice, getNotices } from "@/services/notice.service";
 
 import { INotice } from "@/types/notice";
+import { toast } from "sonner";
 
 export default function NoticesPage() {
   const [notices, setNotices] = useState<INotice[]>([]);
@@ -42,7 +43,29 @@ export default function NoticesPage() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNotices();
   }, []);
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteNotice(id);
 
+      toast("Notice deleted successfully", {
+        position: "bottom-right",
+        style: {
+          background: "#10b981", // green-500
+          color: "#ffffff",
+        },
+      });
+
+      fetchNotices();
+    } catch (error) {
+      toast("Failed to delete notice", {
+        position: "bottom-right",
+        style: {
+          background: "#ef4444", // red-500
+          color: "#ffffff",
+        },
+      });
+    }
+  };
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -69,7 +92,7 @@ export default function NoticesPage() {
               <TableHead>Priority</TableHead>
               <TableHead>Date</TableHead>
               <TableHead>Description</TableHead>
-              <TableHead className="w-[150px]">Actions</TableHead>
+              <TableHead className="w-37.5">Actions</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -109,7 +132,11 @@ export default function NoticesPage() {
                         <Pencil className="h-4 w-4" />
                       </Button>
 
-                      <Button size="icon" variant="destructive">
+                      <Button
+                        size="icon"
+                        variant="destructive"
+                        onClick={() => handleDelete(notice._id)}
+                      >
                         <Trash className="h-4 w-4" />
                       </Button>
                     </div>
