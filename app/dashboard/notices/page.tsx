@@ -129,9 +129,10 @@ export default function NoticesPage() {
                   <TableCell>
                     <div className="flex gap-2">
                       <Button size="icon" variant="outline">
-                        <Pencil className="h-4 w-4" />
+                        <Link href={`/dashboard/notices/edit/${notice._id}`}>
+                          <Pencil className="h-4 w-4" />
+                        </Link>
                       </Button>
-
                       <Button
                         size="icon"
                         variant="destructive"
