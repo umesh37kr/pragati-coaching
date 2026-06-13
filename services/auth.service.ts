@@ -13,7 +13,8 @@ export interface RegisterPayload {
 }
 
 export const loginUser = async (payload: LoginPayload) => {
-  const response = await axios.post("/auth/login", payload);
+  console.log("loginUser called with payload:", payload);
+  const response = await api.post("/auth/login", payload);
 
   return response.data;
 };

@@ -37,17 +37,35 @@ export default function LoginForm() {
     });
   };
 
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setLoading(true);
+
+  //     const response = await loginUser(formData);
+
+  //     localStorage.setItem("token", response.token);
+
+  //     router.push("/dashboard");
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert("Invalid credentials");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       setLoading(true);
 
-      const response = await loginUser(formData);
-
-      localStorage.setItem("token", response.token);
+      await loginUser(formData);
 
       router.push("/dashboard");
+      router.refresh();
     } catch (error) {
       console.error(error);
       alert("Invalid credentials");
