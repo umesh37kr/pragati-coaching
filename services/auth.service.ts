@@ -1,3 +1,4 @@
+import api from "@/lib/axios";
 import axios from "axios";
 
 export interface LoginPayload {
@@ -19,6 +20,27 @@ export const loginUser = async (payload: LoginPayload) => {
 
 export const registerUser = async (payload: RegisterPayload) => {
   const response = await axios.post("/api/auth/register", payload);
+
+  return response.data;
+};
+
+// export const loginUser = async (email: string, password: string) => {
+//   const response = await api.post("/auth/login", {
+//     email,
+//     password,
+//   });
+
+//   return response.data;
+// };
+
+export const logoutUser = async () => {
+  const response = await api.post("/auth/logout");
+
+  return response.data;
+};
+
+export const getCurrentUser = async () => {
+  const response = await api.get("/auth/me");
 
   return response.data;
 };

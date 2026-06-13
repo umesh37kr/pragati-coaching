@@ -1,10 +1,15 @@
 import { cookies } from "next/headers";
+
 import { verifyToken } from "./jwt";
 
 export async function getCurrentUser() {
-  const token = (await cookies()).get("token")?.value;
+  const cookieStore = await cookies();
 
-  if (!token) return null;
+  const token = cookieStore.get("token")?.value;
+
+  if (!token) {
+    return null;
+  }
 
   try {
     return verifyToken(token);
