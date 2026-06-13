@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
 import User from "@/models/User";
-// import connectDB from "../../../../lib/mongodb";
+import connectDB from "../../../../lib/mongodb";
 import { generateToken } from "@/lib/jwt";
 
 export async function POST(req: Request) {
   try {
-    // await connectDB();
+    await connectDB();
 
     const body = await req.json();
 
