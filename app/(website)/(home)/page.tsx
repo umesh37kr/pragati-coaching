@@ -355,12 +355,6 @@ export default function CoachingCenter() {
                 all grades. Modern lab, certified instructor.
               </p>
             </div>
-            <a
-              href="#enroll"
-              className="ml-auto shrink-0 bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
-            >
-              Learn More
-            </a>
           </div>
         </div>
       </section>
@@ -466,16 +460,10 @@ export default function CoachingCenter() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="#"
+              href="/contact"
               className="bg-white text-blue-700 font-semibold text-sm px-8 py-3.5 rounded-xl hover:bg-blue-50 transition-colors"
             >
               Enroll Now
-            </a>
-            <a
-              href="#"
-              className="border border-blue-400 text-white text-sm px-8 py-3.5 rounded-xl hover:bg-blue-700/40 transition-colors"
-            >
-              Download Brochure
             </a>
           </div>
         </div>
