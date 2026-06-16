@@ -90,7 +90,7 @@ export default function LoginForm() {
             <Input
               type="email"
               name="email"
-              placeholder="john@example.com"
+              placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -104,7 +104,7 @@ export default function LoginForm() {
               <Input
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder="********"
+                placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
                 required
