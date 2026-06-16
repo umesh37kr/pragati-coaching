@@ -42,6 +42,16 @@ export async function POST(request: Request) {
 export async function GET() {
   try {
     const notices = await Notice.find().sort({ createdAt: -1 });
+    if (!notices) {
+      return Response.json(
+        {
+          error: "No notices found",
+        },
+        {
+          status: 404,
+        },
+      );
+    }
     return Response.json(notices, {
       status: 200,
     });
