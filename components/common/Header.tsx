@@ -114,6 +114,7 @@ const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setMenuOpen(false)}
                   className="block px-2 py-2.5 text-sm text-gray-600 hover:text-blue-700 hover:bg-gray-50 rounded-lg"
                 >
                   {link.name}
@@ -121,6 +122,7 @@ const Header = () => {
               ))}
               <Link
                 href="/login"
+                onClick={() => setMenuOpen(false)}
                 className="block mt-2 bg-blue-700 text-white text-sm text-center px-4 py-2.5 rounded-lg"
               >
                 Login
