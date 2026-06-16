@@ -113,7 +113,7 @@ export default function ContactPage() {
 
       {/* Table */}
 
-      <Card>
+      <Card className="hidden md:block">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -169,6 +169,30 @@ export default function ContactPage() {
           </Table>
         </CardContent>
       </Card>
+
+      {/* Mobile */}
+      <div className="space-y-4 md:hidden">
+        {filteredContacts.map((item) => (
+          <Card key={item._id}>
+            <CardContent className="p-4 text-xs">
+              <p>
+                <span className="font-semibold">Name:</span> {item.name}
+              </p>
+              <p>
+                <span className="font-semibold">Phone:</span> {item.phone}
+              </p>
+              <p>
+                <span className="font-semibold"> Date:</span>{" "}
+                {format(new Date(item.createdAt), "dd-MM-yyyy")}
+              </p>
+              <p>
+                <span className="font-semibold text-xs">Message:</span>{" "}
+                {item.message}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }

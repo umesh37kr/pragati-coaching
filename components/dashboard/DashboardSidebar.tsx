@@ -5,7 +5,13 @@ import { usePathname } from "next/navigation";
 import { dashboardMenu } from "@/config/dashboard-menu";
 import clsx from "clsx";
 
-export default function DashboardSidebar() {
+type DashboardSidebarProps = {
+  onLinkClick?: () => void;
+};
+
+export default function DashboardSidebar({
+  onLinkClick,
+}: DashboardSidebarProps) {
   const pathname = usePathname();
 
   return (
@@ -22,6 +28,7 @@ export default function DashboardSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={onLinkClick}
                 className={clsx(
                   "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all",
                   pathname === item.href

@@ -21,6 +21,7 @@ import { deleteNotice, getNotices } from "@/services/notice.service";
 
 import { INotice } from "@/types/notice";
 import { toast } from "sonner";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function NoticesPage() {
   const [notices, setNotices] = useState<INotice[]>([]);
@@ -67,7 +68,7 @@ export default function NoticesPage() {
     }
   };
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-semibold">Notices</h1>
@@ -83,7 +84,7 @@ export default function NoticesPage() {
         </Button>
       </div>
 
-      <div className="mt-6 rounded-lg border bg-white">
+      <div className="hidden md:block mt-6 rounded-lg border w-full overflow-x-auto bg-white">
         <Table>
           <TableHeader>
             <TableRow>
@@ -122,8 +123,13 @@ export default function NoticesPage() {
                     {format(new Date(notice.createdAt), "dd-MM-yyyy")}
                   </TableCell>
 
-                  <TableCell className="font-sm">
-                    {notice.description}
+                  <TableCell>
+                    <div
+                      className="max-w-xs truncate"
+                      title={notice.description}
+                    >
+                      {notice.description}
+                    </div>
                   </TableCell>
 
                   <TableCell>
@@ -148,6 +154,35 @@ export default function NoticesPage() {
           </TableBody>
         </Table>
       </div>
-    </div>
+
+      {/* Mobile */}
+      <div className="space-y-4 md:hidden">
+        {notices.map((item) => (
+          <Card key={item._id}>
+            <CardContent className="p-4 text-xs">
+              <p>
+                <span className="font-semibold">Title:</span> {item.title}
+              </p>
+              <p>
+                <span className="font-semibold">Category:</span> {item.category}
+              </p>
+              <p>
+                <span className="font-semibold text-xs">Priority:</span>{" "}
+                {item.priority}
+              </p>
+              <p>
+                <span className="font-semibold">Issued Date:</span>{" "}
+                {format(new Date(item.createdAt), "dd-MM-yyyy")}
+              </p>
+              <p>
+                {" "}
+                <span className="font-semibold text-xs">Description: </span>
+                {item.description}
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 }
