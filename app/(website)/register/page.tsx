@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 import { registerSchema, RegisterFormData } from "@/validations/auth";
 
-import { registerUser } from "@/services/auth.service";
+import { getAuthErrorMessage, registerUser } from "@/services/auth.service";
 
 import { Button } from "@/components/ui/button";
 
@@ -20,6 +20,7 @@ export default function RegisterPage() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -32,12 +33,13 @@ export default function RegisterPage() {
   const onSubmit = async (data: RegisterFormData) => {
     try {
       setLoading(true);
+      setErrorMessage("");
 
       await registerUser(data);
 
       router.push("/login");
-    } catch (error: any) {
-      alert(error?.response?.data?.message || "Registration failed");
+    } catch (error) {
+      setErrorMessage(getAuthErrorMessage(error, "Registration failed"));
     } finally {
       setLoading(false);
     }
@@ -86,6 +88,12 @@ export default function RegisterPage() {
           <Button type="submit" disabled={loading} className="w-full">
             {loading ? "Creating Account..." : "Register"}
           </Button>
+
+          {errorMessage && (
+            <p className="text-sm text-red-600" role="alert" aria-live="polite">
+              {errorMessage}
+            </p>
+          )}
         </form>
       </div>
     </div>

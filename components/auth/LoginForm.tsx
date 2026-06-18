@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import { loginUser } from "@/services/auth.service";
-
+import { getAuthErrorMessage, loginUser } from "@/services/auth.service";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -29,6 +29,7 @@ export default function LoginForm() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -61,14 +62,13 @@ export default function LoginForm() {
 
     try {
       setLoading(true);
+      setErrorMessage("");
 
       await loginUser(formData);
-
       router.push("/dashboard");
       router.refresh();
     } catch (error) {
-      console.error(error);
-      alert("Invalid credentials");
+      setErrorMessage(getAuthErrorMessage(error, "Invalid credentials"));
     } finally {
       setLoading(false);
     }
@@ -130,6 +130,12 @@ export default function LoginForm() {
               "Login"
             )}
           </Button>
+
+          {errorMessage && (
+            <p className="text-sm text-red-600" role="alert" aria-live="polite">
+              {errorMessage}
+            </p>
+          )}
         </form>
       </CardContent>
     </Card>
