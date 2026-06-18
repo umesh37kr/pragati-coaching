@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 import { Menu } from "lucide-react";
 import DashboardSidebar from "./DashboardSidebar";
@@ -18,6 +23,7 @@ export default function MobileSidebar() {
           </SheetTrigger>
 
           <SheetContent side="left" className="p-0">
+            <SheetTitle className="sr-only">Dashboard navigation</SheetTitle>
             <DashboardSidebar onLinkClick={() => setOpen(false)} />
           </SheetContent>
         </Sheet>
