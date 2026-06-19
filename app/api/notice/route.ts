@@ -1,9 +1,12 @@
+import connectDB from "@/lib/mongodb";
 import Notice from "@/models/Notice";
 import { noticeSchema } from "@/validations/notice.schema";
 
 // POST /api/notice --> create notice
 export async function POST(request: Request) {
   try {
+    await connectDB();
+
     const body = await request.json();
 
     const validated = noticeSchema.safeParse(body);
@@ -41,19 +44,15 @@ export async function POST(request: Request) {
 // GET /api/notice --> get all notices
 export async function GET() {
   try {
-    const notices = await Notice.find().sort({ createdAt: -1 });
-    if (!notices) {
-      return Response.json(
-        {
-          error: "No notices found",
-        },
-        {
-          status: 404,
-        },
-      );
-    }
+    await connectDB();
+
+    const notices = await Notice.find().sort({ createdAt: -1 }).lean();
+
     return Response.json(notices, {
       status: 200,
+      headers: {
+        "Cache-Control": "no-store",
+      },
     });
   } catch (error) {
     console.error(error);
