@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 import { getAuthErrorMessage, loginUser } from "@/services/auth.service";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,8 +17,6 @@ import {
 import { Label } from "@/components/ui/label";
 
 export default function LoginForm() {
-  const router = useRouter();
-
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -65,8 +61,7 @@ export default function LoginForm() {
       setErrorMessage("");
 
       await loginUser(formData);
-      router.push("/dashboard");
-      router.refresh();
+      window.location.assign("/dashboard");
     } catch (error) {
       setErrorMessage(getAuthErrorMessage(error, "Invalid credentials"));
     } finally {
