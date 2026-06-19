@@ -6,26 +6,6 @@ import { useEffect, useState } from "react";
 import { getNotices } from "@/services/notice.service";
 import { INotice } from "@/types/notice";
 
-// const notices = [
-//   {
-//     _id: "1",
-//     title: "Exam Schedule Released",
-//     description:
-//       "The exam schedule for the upcoming semester has been released. Please check the notice board for details.",
-//     category: "Exams",
-//     priority: "High",
-//     createdAt: "2024-06-01T10:00:00Z",
-//   },
-//   {
-//     _id: "2",
-//     title: "Holiday Announcement",
-//     description:
-//       "The institute will be closed on 15th June for a public holiday. Please plan accordingly.",
-//     category: "General",
-//     priority: "Medium",
-//     createdAt: "2024-06-05T12:00:00Z",
-//   },
-// ];
 const Notice = () => {
   const [notices, setNotices] = useState<INotice[]>([]);
 
@@ -59,7 +39,7 @@ const Notice = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid m-4 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {notices.map((notice) => (
               <Card
                 key={notice._id}
